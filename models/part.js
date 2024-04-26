@@ -10,7 +10,11 @@ const partSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    characterisitcs: {
+    updateDate:{
+        type: String,
+        required: true
+    },
+    characteristics: {
         resistance: { type: Number },
         tolerance: { type: Number },
         type: { type: String },

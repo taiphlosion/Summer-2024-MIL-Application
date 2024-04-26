@@ -11,8 +11,12 @@ const Part = require("./models/part.js");
 const partsRouter = require('./routes/partsRouter.js');
 
 app.use(morgan('dev')); //Log requests to the console
-app.use(bodyParser.json()); //Parses incoming requests with JSON payloads
-app.use('/parts', partsRouter);
+app.use((req, res, next) => {
+    console.log('Incoming request:', req.method, req.path);
+    next();
+});
+app.use(express.json()); //Parses incoming requests with JSON payloads
+app.use('/', partsRouter);
 
 //Test Route
 app.get('/', (req, res) => {
