@@ -10,7 +10,12 @@ router.post('/newpart', async (req, res) => {
         res.status(201).json(savedPart); // Send back the newly created part
     } 
     catch (error) {
-        res.status(500).json({ message: error.message }); // Error handling
+        if (error.name === 'ValidationError') {
+            // console.log("Expected Types:", typeEnums[this.class]);            
+            const messages = Object.keys(error.errors).map(key => error.errors[key].message);
+            return res.status(400).json({ errors: messages });
+        }
+        res.status(500).json({ message: error.message });
     }
 });
 
@@ -97,6 +102,27 @@ router.get('/partinfo/:sku', async (req, res) => {
     }
 });
 
+//Search for parts based off of characteristics
+//stuff must be added to the url. For example, /search?class=Resistor&resistance=100&tolerance=5
+router.get('/search', async (req, res) => {
+    console.log(req.query);  // Log the incoming query parameters to debug
+
+    try {
+        const query = buildQuery(req.query);
+        console.log('MongoDB Query:', query); // Log the MongoDB query to ensure it's built correctly
+
+        const results = await Part.find(query);
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.status(404).json({ message: "No parts found matching the criteria." });
+        }
+    } catch (error) {
+        console.error('Error during search:', error);
+        res.status(500).json({ message: "Error processing search request" });
+    }
+});
+
 //Deletes part based off of SKU
 router.delete('/delete/:sku', async (req, res) => {
     const sku = req.params.sku;
@@ -115,5 +141,18 @@ router.delete('/delete/:sku', async (req, res) => {
     }
 });
 
+function buildQuery(params) {
+    let query = {};
+    if (params.class) {
+        query['class'] = params.class;
+    }
+    // Add conditions for other characteristics
+    for (let key in params) {
+        if (params.hasOwnProperty(key) && key !== 'class' && params[key]) {
+            query[`characteristics.${key}`] = params[key];
+        }
+    }
+    return query;
+}
 
 module.exports = router;
