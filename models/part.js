@@ -11,20 +11,30 @@ const partSchema = new mongoose.Schema({
         required: true
     },
     updateDate:{
-        type: String,
-        required: true
+        type: Date,
+        default: Date.now
+    },
+    quantity: {
+        type: Number,
+        default: 0
     },
     characteristics: {
-        resistance: { type: Number },
-        tolerance: { type: Number },
-        type: { type: String },
-        length: { type: mongoose.Decimal128 },
-        gauge: { type: mongoose.Decimal128 },
-        color: { type: String },
-        alphaType: { type: String },
-        betaType: { type: String },
-        speed: { type: String },
+        resistance: { type: Number, default: null },
+        tolerance: { type: Number, default: null },
+        type: { type: String, default: null },
+        length: { type: mongoose.Decimal128, default: null },
+        gauge: { type: mongoose.Decimal128, default: null },
+        color: { type: String, default: null },
+        alphaType: { type: String, default: null },
+        betaType: { type: String, default: null },
+        speed: { type: String, default: null },
     }
+});
+
+// Pre-save hook to update the lastUpdatedDate field to the current time
+partSchema.pre('save', function(next) {
+    this.updateDate = new Date();
+    next();
 });
 
 module.exports = mongoose.model('Part', partSchema);
