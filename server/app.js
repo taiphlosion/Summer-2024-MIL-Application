@@ -1,5 +1,6 @@
-require('./db.js');
+require('./db');
 
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -9,6 +10,8 @@ const PORT = 8080;
 
 const Part = require("./models/part.js");
 const partsRouter = require('./routes/partsRouter.js');
+
+app.use(cors());
 
 app.use(morgan('dev')); //Log requests to the console
 app.use((req, res, next) => {
