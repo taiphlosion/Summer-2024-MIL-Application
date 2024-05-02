@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const requiredForLength = ['Solder', 'Wire', 'Display Cable', 'Ethernet Cable'];
+const validClasses = ['Resistor', 'Solder', 'Wire', 'Display Cable', 'Ethernet Cable'];
 
 //Ethernet will have its own special case
 const requiredForType = ['Solder', 'Display Cable'];
@@ -17,7 +18,8 @@ const partSchema = new mongoose.Schema({
     },
     class:{
         type: String,
-        required: true
+        required: true,
+        enum: validClasses
     },
     updateDate:{
         type: Date,
