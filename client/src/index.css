@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.inventory-list {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.inventory-item {
+  background: #3e27bc;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.characteristics {
+  margin-top: 10px;
+}
+
+.characteristic-item {
+  background: #dc6c1d;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.App-link {
+  margin-right: 10px; /* Adds space to the right of each button */
+  padding: 8px 16px; /* Adds padding inside each button for better touch */
+  background-color: #e79519; /* Gives a background color for better visibility */
+  border: none; /* Removes any default border */
+  border-radius: 5px; /* Optional: rounds the corners of the buttons */
+  text-decoration: none; /* Removes underline from links */
+  color: rgb(0, 0, 0); /* Sets the text color */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+.App-link:hover {
+  background-color: #e0e0e0; /* Changes background on hover for better user feedback */
+}
+
+

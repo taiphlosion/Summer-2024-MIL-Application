@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import './index.css';  // Make sure to create this CSS file
 
 function InventoryList() {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        fetch('/inventory')  // Make sure this URL is correct for your API endpoint
+        fetch('/inventory')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`HTTP status ${response.status}`);
                 }
                 return response.json();
             })
@@ -17,24 +18,18 @@ function InventoryList() {
             .catch(error => {
                 console.error('Fetch error:', error);
             });
-    }, []);  // The empty array ensures this effect runs only once after the component mounts
+    }, []);
 
     return (
-        <div>
+        <div className="inventory-list">
             <h1>Inventory List</h1>
             {parts.length > 0 ? (
-                <ul>
-                    {parts.map(part => (
-                        <li key={part._id}>
-                            SKU: {part.sku}, Class: {part.class}, Quantity: {part.quantity}
-                            <ul>
-                                {Object.entries(part.characteristics).map(([key, value]) => (
-                                    <li key={key}>{key}: {value instanceof Object ? JSON.stringify(value) : value}</li>
-                                ))}
-                            </ul>
-                        </li>
-                    ))}
-                </ul>
+                parts.map(part => (
+                    <div key={part._id} className="inventory-item">
+                        <div><strong>SKU:</strong> {part.sku}</div>
+                        <div><strong>Quantity:</strong> {part.quantity}</div>
+                    </div>
+                ))
             ) : (
                 <p>No parts found in inventory.</p>
             )}
