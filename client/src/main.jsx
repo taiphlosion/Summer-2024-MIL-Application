@@ -14,7 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>API Test</h1>
+          <h1>Run of the MIL API</h1>
           <nav>
             <Link to="/inventory" className="App-link">Show Inventory</Link>
             <Link to="/add-part" className="App-link">Add New Part</Link>
