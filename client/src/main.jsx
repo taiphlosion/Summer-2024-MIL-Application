@@ -9,6 +9,7 @@ import GetPartInfo from './getPart';
 import SearchParts from './SearchParts';
 import DeletePart from './deletePart';
 
+//Main navigation for website
 function App() {
   return (
     <Router>

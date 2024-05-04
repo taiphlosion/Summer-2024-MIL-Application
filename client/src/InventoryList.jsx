@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';  // Make sure to create this CSS file
+import './index.css'; 
 
 function InventoryList() {
     const [parts, setParts] = useState([]);

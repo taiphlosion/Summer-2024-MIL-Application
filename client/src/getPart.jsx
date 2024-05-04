@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './index.css';  // Make sure to create this CSS file
+import './index.css'; 
 
+//Clean up characteristics for display
 function formatCharacteristics(key) {
     return key
-        // Split the string at each capital letter (for camelCase)
         .split(/(?=[A-Z])/)
-        // Capitalize the first letter of each word and join them with space
         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         .join(' ');
 }

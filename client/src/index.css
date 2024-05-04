@@ -36,18 +36,18 @@ code {
 }
 
 .App-link {
-  margin-right: 10px; /* Adds space to the right of each button */
-  padding: 8px 16px; /* Adds padding inside each button for better touch */
-  background-color: #e79519; /* Gives a background color for better visibility */
-  border: none; /* Removes any default border */
-  border-radius: 5px; /* Optional: rounds the corners of the buttons */
-  text-decoration: none; /* Removes underline from links */
-  color: rgb(0, 0, 0); /* Sets the text color */
-  cursor: pointer; /* Changes cursor to pointer on hover */
+  margin-right: 10px; 
+  padding: 8px 16px; 
+  background-color: #e79519; 
+  border: none; 
+  border-radius: 5px; 
+  text-decoration: none; 
+  color: rgb(0, 0, 0); 
+  cursor: pointer; 
 }
 
 .App-link:hover {
-  background-color: #e0e0e0; /* Changes background on hover for better user feedback */
+  background-color: #e0e0e0; 
 }
 
 

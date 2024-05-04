@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css';  // Make sure to create this CSS file
+import './index.css'; 
 
 function GetPartQuantity() {
     const [sku, setSKU] = useState('');

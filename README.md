@@ -17,3 +17,6 @@ From there, you should be locally hosting the website and API locally. From ther
 - Postman
 - React
 - MongoDB
+
+# About
+So the API has a basic React front-end to it that allows you to properly use it. It fulfills every method and function laid out in the project documentation. This was my first time developing an API like this but I had a lot of fun working on it. 
